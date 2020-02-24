@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 class Faculties extends Component {
 	render() {
 		var { faculties } = this.props;
@@ -10,9 +11,9 @@ class Faculties extends Component {
 					<td>{faculty.empId}</td>
 					<td>{faculty.name}</td>
 					<td>
-						<a href={'details/' + faculty.empId}>
+						<Link to={'details/' + faculty.empId}>
 							<i className='material-icons prefix'>add</i>
-						</a>
+						</Link>
 					</td>
 				</tr>
 			) : null;
@@ -31,7 +32,9 @@ class Faculties extends Component {
 				</table>
 				<div className='grey-text'>
 					<h6>
-						<i>{/* Showing {count} of {faculties.length} results */}</i>
+						<i>
+							Showing {count} of {faculties.length} results
+						</i>
 					</h6>
 				</div>
 			</div>

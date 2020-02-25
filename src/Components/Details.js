@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
-import Data from '../facultyall.json';
 import Panel from './Panel';
 import '../loading.css';
 import '../detailsStyle.css';
 import TimeTable from './TimeTable.js';
+import { connect } from 'react-redux';
 
 class Details extends Component {
-	state = {};
-	componentDidMount() {
-		console.log(this.props);
-		let id = this.props.match.params.empid;
-		let data = Data.find(x => x.empId === id);
-		this.setState(data);
-	}
-
 	render() {
 		return (
 			<div className="detailsPage">
-				{this.state.empId == null ? (
+				{this.props.details === undefined ||
+				this.props.details.empId == null ? (
 					<div className="center" style={{ marginTop: 100 }}>
 						<div className="sk-folding-cube">
 							<div className="sk-cube1 sk-cube"></div>
@@ -29,8 +22,8 @@ class Details extends Component {
 					</div>
 				) : (
 					<div>
-						<Panel tab={this.state} />
-						<TimeTable www={this.state.whenwherewhat} />
+						<Panel tab={this.props.details} />
+						<TimeTable www={this.props.details.whenwherewhat} />
 					</div>
 				)}
 			</div>
@@ -38,4 +31,13 @@ class Details extends Component {
 	}
 }
 
-export default Details;
+const mapStateToProps = (state, ownProps) => {
+	let id = ownProps.match.params.empid;
+	let data = state.allFaculties.find(x => x.empId === id);
+
+	return {
+		details: data,
+	};
+};
+
+export default connect(mapStateToProps)(Details);

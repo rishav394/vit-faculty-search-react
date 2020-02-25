@@ -1,24 +1,14 @@
 import React, { Component } from 'react';
 import SearchFaculty from './SearchFaculty';
 import Faculties from './Faculties';
-import Data from '../facultyall.json';
+import { connect } from 'react-redux';
 
 class Body extends Component {
-	state = {
-		allFaculties: [],
-		faculties: [],
-	};
-
-	componentDidMount() {
-		this.setState({
-			allFaculties: Data,
-		});
-	}
 	searchFaculty = faculty => {
 		// Wrong implementation. Please fix
-		var res = this.state.allFaculties.filter(fac => {
+		var res = this.props.allFaculties.filter(fac => {
 			return (
-				// fac.empId === faculty.empid ||
+				fac.empId === faculty.empid ||
 				(fac.cabin.includes(faculty.cabin) && faculty.cabin.length > 0) ||
 				(fac.name.includes(faculty.name) && faculty.name.length > 0) ||
 				(fac.email.includes(faculty.email) && faculty.email.length > 0) ||
@@ -27,19 +17,36 @@ class Body extends Component {
 					faculty.designation.length > 0)
 			);
 		});
-		this.setState({
-			faculties: res,
-		});
+
+		this.props.setFaculty(res);
 	};
 
 	render() {
 		return (
 			<div className="row section container flow-text">
 				<SearchFaculty searchFaculty={this.searchFaculty} />
-				<Faculties faculties={this.state.faculties} />
+				<Faculties faculties={this.props.faculties} />
 			</div>
 		);
 	}
 }
 
-export default Body;
+const mapStateToProps = state => {
+	return {
+		allFaculties: state.allFaculties,
+		faculties: state.faculties,
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		setFaculty: fac => {
+			dispatch({
+				type: 'SET_FACULTIES_RESULT',
+				res: fac,
+			});
+		},
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Body);

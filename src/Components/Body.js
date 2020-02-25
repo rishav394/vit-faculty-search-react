@@ -14,26 +14,27 @@ class Body extends Component {
 			allFaculties: Data,
 		});
 	}
-	searchFaculty = (faculty) => {
+	searchFaculty = faculty => {
 		// Wrong implementation. Please fix
-		var res = this.state.allFaculties.filter((fac) => {
+		var res = this.state.allFaculties.filter(fac => {
 			return (
-				fac.cabin.includes(faculty.cabin) ||
-				fac.name.includes(faculty.name) ||
-				fac.email.includes(faculty.email) ||
-				fac.mobile.includes(faculty.mobile) ||
-				fac.designation.includes(faculty.designation)
+				// fac.empId === faculty.empid ||
+				(fac.cabin.includes(faculty.cabin) && faculty.cabin.length > 0) ||
+				(fac.name.includes(faculty.name) && faculty.name.length > 0) ||
+				(fac.email.includes(faculty.email) && faculty.email.length > 0) ||
+				(fac.mobile.includes(faculty.mobile) && faculty.mobile.length > 0) ||
+				(fac.designation.includes(faculty.designation) &&
+					faculty.designation.length > 0)
 			);
 		});
 		this.setState({
 			faculties: res,
 		});
-		console.log(this.state);
 	};
 
 	render() {
 		return (
-			<div className='row section container flow-text'>
+			<div className="row section container flow-text">
 				<SearchFaculty searchFaculty={this.searchFaculty} />
 				<Faculties faculties={this.state.faculties} />
 			</div>

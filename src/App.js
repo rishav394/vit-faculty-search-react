@@ -10,10 +10,10 @@ class App extends Component {
 		M.AutoInit();
 		return (
 			<BrowserRouter>
-				<div className='App'>
+				<div className="App">
 					<Navbar />
-					<Route exact path='/' component={Body} />
-					<Route path='/details/:empid' component={Details} />
+					<Route exact path="/" component={Body} />
+					<Route path="/details/:empid" component={Details} />
 				</div>
 			</BrowserRouter>
 		);

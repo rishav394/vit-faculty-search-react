@@ -4,6 +4,7 @@ class Faculties extends Component {
 	render() {
 		var { faculties } = this.props;
 		var count = 0;
+
 		const FacultyList = faculties.slice(0, 15).map(faculty => {
 			count++;
 			return (
@@ -18,6 +19,7 @@ class Faculties extends Component {
 				</tr>
 			);
 		});
+
 		return (
 			<div className="col s12 l6 offset-l1">
 				<table className="fa-border striped">

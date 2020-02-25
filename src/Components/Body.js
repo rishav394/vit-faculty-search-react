@@ -5,20 +5,7 @@ import { connect } from 'react-redux';
 
 class Body extends Component {
 	searchFaculty = faculty => {
-		// Wrong implementation. Please fix
-		var res = this.props.allFaculties.filter(fac => {
-			return (
-				fac.empId === faculty.empid ||
-				(fac.cabin.includes(faculty.cabin) && faculty.cabin.length > 0) ||
-				(fac.name.includes(faculty.name) && faculty.name.length > 0) ||
-				(fac.email.includes(faculty.email) && faculty.email.length > 0) ||
-				(fac.mobile.includes(faculty.mobile) && faculty.mobile.length > 0) ||
-				(fac.designation.includes(faculty.designation) &&
-					faculty.designation.length > 0)
-			);
-		});
-
-		this.props.setFaculty(res);
+		this.props.findAndSetFaculty(faculty);
 	};
 
 	render() {
@@ -40,10 +27,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		setFaculty: fac => {
+		findAndSetFaculty: faculty => {
 			dispatch({
-				type: 'SET_FACULTIES_RESULT',
-				res: fac,
+				type: 'FIND_FACULTY',
+				faculty,
 			});
 		},
 	};

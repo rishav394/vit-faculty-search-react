@@ -24,7 +24,9 @@ const Panel = ({ tab }) => {
 						<td>
 							<a href={'tel:' + tab.mobile}>{tab.mobile}</a>
 						</td>
-						<td>{tab.email}</td>
+						<td>
+							<a href={'mailto:' + tab.email}>{tab.email}</a>
+						</td>
 						<td>{tab.school}</td>
 						<td>{tab.cabin}</td>
 						<td>{tab.designation}</td>

@@ -13,6 +13,7 @@
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local
@@ -21,3 +22,11 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Firebase-tools gitignore https://github.com/firebase/firebase-tools/blob/master/.gitignore
+firebase-debug.log
+.npmrc
+.firebase/
+
+# Open source projects or starter templates should generally not check in the .firebaserc file.
+.firebaserc

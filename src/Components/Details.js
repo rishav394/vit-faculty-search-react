@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Panel from './Panel';
-import '../loading.css';
+import '../loading.scss';
 import '../detailsStyle.css';
 import TimeTable from './TimeTable.js';
 import { connect } from 'react-redux';
@@ -11,14 +11,20 @@ class Details extends Component {
 			<div className="detailsPage">
 				{this.props.details === undefined ||
 				this.props.details.empId == null ? (
-					<div className="center" style={{ marginTop: 100 }}>
-						<div className="sk-folding-cube">
-							<div className="sk-cube1 sk-cube"></div>
-							<div className="sk-cube2 sk-cube"></div>
-							<div className="sk-cube4 sk-cube"></div>
-							<div className="sk-cube3 sk-cube"></div>
+					<div>
+						<div id="notfound">
+							<div className="notfound">
+								<div className="notfound-404">
+									<div></div>
+									<h1>404</h1>
+								</div>
+								<h2>Page not found</h2>
+								<p>
+									The page you are looking for might have been removed had its
+									name changed or is temporarily unavailable.
+								</p>
+							</div>
 						</div>
-						<p className="flow-text">Loading...</p>
 					</div>
 				) : (
 					<div>

@@ -30,3 +30,6 @@ firebase-debug.log
 
 # Open source projects or starter templates should generally not check in the .firebaserc file.
 .firebaserc
+
+# Data files
+data

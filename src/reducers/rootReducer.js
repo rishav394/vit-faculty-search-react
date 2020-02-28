@@ -1,7 +1,7 @@
-import data from '../facultyall.json';
+import { faculties } from '../lib/facultyConverter';
 
 const initState = {
-	allFaculties: data,
+	allFaculties: faculties,
 	faculties: [],
 };
 

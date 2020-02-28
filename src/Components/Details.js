@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Panel from './Panel';
 import '../loading.scss';
-import '../detailsStyle.css';
+import '../detailsStyle.scss';
 import TimeTable from './TimeTable.js';
 import { connect } from 'react-redux';
 

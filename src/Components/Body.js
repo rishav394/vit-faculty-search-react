@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import SearchFaculty from './SearchFaculty';
 import Faculties from './Faculties';
 import { connect } from 'react-redux';
+import $ from 'jquery';
 
 class Body extends Component {
 	searchFaculty = faculty => {
 		this.props.findAndSetFaculty(faculty);
 	};
+
+	componentDidMount() {
+		$('.material-tooltip').remove();
+	}
 
 	render() {
 		return (

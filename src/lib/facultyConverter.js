@@ -69,4 +69,4 @@ faculties.forEach(faculty => {
 	}
 });
 
-module.exports = { faculties };
+export default faculties;

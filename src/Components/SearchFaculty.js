@@ -6,10 +6,16 @@ class SearchFaculty extends Component {
 		mobile: '',
 		email: '',
 		designation: '',
-		empid: '',
+		empId: '',
 	};
 
 	handleChange = e => {
+		var upperArray = ['name', 'cabin', 'empId', 'mobile'];
+
+		e.target.value = upperArray.includes(e.target.id)
+			? e.target.value.toUpperCase()
+			: e.target.value.toLowerCase();
+
 		this.setState({
 			[e.target.id]: e.target.value,
 		});
@@ -20,10 +26,6 @@ class SearchFaculty extends Component {
 		this.props.searchFaculty(this.state);
 	};
 
-	handleNameChange = e => {
-		e.target.value = e.target.value.toUpperCase();
-		this.handleChange(e);
-	};
 	render() {
 		return (
 			<div className="col s12 l5">
@@ -31,13 +33,11 @@ class SearchFaculty extends Component {
 					<div className="input-field">
 						<i className="material-icons prefix">person_outline</i>
 						<input
-							onChange={this.handleNameChange}
+							onChange={this.handleChange}
 							value={this.state.name}
 							type="text"
 							id="name"
 							name="name"
-							pattern=".{3,}"
-							title="Should be atleast 3 letters"
 						/>
 						<label htmlFor="name">By name</label>
 					</div>
@@ -49,8 +49,6 @@ class SearchFaculty extends Component {
 							type="text"
 							id="email"
 							name="email"
-							pattern=".{3,}"
-							title="Should be atleast 3 letters"
 						/>
 						<label htmlFor="email">By VIT email</label>
 					</div>
@@ -62,8 +60,6 @@ class SearchFaculty extends Component {
 							type="text"
 							id="cabin"
 							name="cabin"
-							pattern=".{2,}"
-							title="Should be atleast 2 letters"
 						/>
 						<label htmlFor="cabin">By cabin number</label>
 					</div>
@@ -75,8 +71,6 @@ class SearchFaculty extends Component {
 							type="text"
 							id="designation"
 							name="designation"
-							pattern=".{7,}"
-							title="Should be atleast 7 letters"
 						/>
 						<label htmlFor="designation">By designation</label>
 					</div>
@@ -84,14 +78,12 @@ class SearchFaculty extends Component {
 						<i className="material-icons prefix">turned_in_not</i>
 						<input
 							onChange={this.handleChange}
-							value={this.state.empid}
+							value={this.state.empId}
 							type="text"
-							id="empid"
-							name="empid"
-							pattern=".{2,}"
-							title="Should be atleast 2 letters"
+							id="empId"
+							name="empId"
 						/>
-						<label htmlFor="empid">By Employee ID</label>
+						<label htmlFor="empId">By Employee ID</label>
 					</div>
 					<div className="input-field center" id="search">
 						<button

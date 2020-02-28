@@ -1,0 +1,64 @@
+.detailsPage {
+	.character-counter {
+		color: #008cba;
+	}
+
+	.section {
+		padding-top: 4vw;
+		padding-bottom: 1vw;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	.nav-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.container table {
+		border: 2px solid #3c8dbc;
+		text-align: center;
+		font-size: 15px;
+		width: 100%;
+	}
+
+	.container td {
+		border: 1px solid #3c8dbc;
+		text-align: center;
+		vertical-align: middle;
+		padding: 3px;
+		width: 50px;
+	}
+
+	td.greyMatter {
+		background-color: #e2e2e2;
+	}
+
+	.theoryTime {
+		background-color: #ccccff;
+	}
+
+	.labTime {
+		background-color: #99ccff;
+	}
+
+	.theorySlots {
+		background-color: #ffffcc;
+	}
+
+	@media only screen and (max-width: 1300px) {
+		table.timetable {
+			display: block;
+		}
+	}
+
+	table.timetable {
+		overflow-x: auto;
+		white-space: nowrap;
+	}
+
+	td a {
+		text-decoration: none;
+		color: unset;
+	}
+}
